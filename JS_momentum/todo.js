@@ -6,17 +6,34 @@ const button = document.querySelector(".js-button"),
 const toDos = []; // todo가 추가될 때마다, 해당 array에 추가되도록 한다.
 
 function init() {
+    loadToDos();
     makeTodo();
+}
+
+function loadToDos() {
+    const loadToDos = localStorage.getItem("toDos");
+
+    if (loadToDos !== null) {
+        const parsedToDos = JSON.parse(loadToDos);
+
+        // for (let i = 0; i < parsedToDos.length; i++) {
+        //     paintTodo(parsedToDos[i].text);
+        // }
+
+        parsedToDos.forEach(function (toDos) { //array forEach 사용하는 방법
+            paintTodo(toDos.text);
+        });
+    }
 
 }
 
 function updateToDos() {
-    localStorage.setItem("toDos", toDos);
+    localStorage.setItem("toDos", JSON.stringify(toDos));
 }
 
 function makeTodo() {
     checkboxForm.addEventListener("submit", handleToDo);
-    updateToDos();
+
 }
 
 function handleToDo() {
@@ -37,6 +54,7 @@ function paintTodo(text) {
 
     li.appendChild(span);
     li.appendChild(delBtn);
+    li.id = newId;
 
     todoList.appendChild(li);
 
@@ -46,6 +64,7 @@ function paintTodo(text) {
     }
 
     toDos.push(toDoObj);
+    updateToDos();
 }
 
 
