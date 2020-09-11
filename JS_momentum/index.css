@@ -9,3 +9,34 @@
 .showing{
     display: block;
 }
+
+.momentum{
+    position:absolute;
+  top:50%;
+  left:50%;  
+  transform:translate(-50%, -50%)
+}
+
+.js-clock{
+    text-align: center;    
+}
+
+.js-checkboxForm{
+    text-align: center;
+}
+
+.todo{
+    position: absolute;
+    right : 10px;
+    bottom:0px
+}
+
+h1{
+    font-size: 8vw;
+    margin: 0;    
+}
+
+h4{
+    margin: 0;
+    font-size: 3vw;
+}
