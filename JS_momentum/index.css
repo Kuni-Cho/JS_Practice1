@@ -14,8 +14,27 @@
     position:absolute;
   top:50%;
   left:50%;
-  
+  color: white;
   transform:translate(-50%, -50%);  
+}
+
+.inputTodo{
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1;
+    background-color: transparent;
+    color : white;
+    border-color: white;
+    margin-top: 2.0vw;
+    width: 50vw;
+    line-height: 5vw;
+    font-size: 2vw;
+}
+
+input::placeholder{
+    color:white;
+    text-align: center;
 }
 
 .js-clock{
@@ -28,8 +47,10 @@
 
 .todo{
     position: absolute;
-    right : 10px;
-    bottom:0px
+    right : 30px;
+    bottom:0px;
+    color : white;
+    cursor: pointer;
 }
 
 h1{
@@ -38,8 +59,13 @@ h1{
 }
 
 h4{
-    margin: 0;
+    margin: 1.0vw;
     font-size: 3vw;
+}
+
+h5{
+    font-size: 1vw;
+    
 }
 
 @keyframes fadeIn{
