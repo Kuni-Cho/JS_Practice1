@@ -1,7 +1,9 @@
 const button = document.querySelector(".js-button"),
-    todoList = document.querySelector(".js-toDoList"),
+    // todoList = document.querySelector(".js-toDoList"),
     checkboxForm = document.querySelector(".js-checkboxForm"),
-    inputToDo = checkboxForm.querySelector("input");
+    inputToDo = checkboxForm.querySelector("input"),
+    todoBox = document.querySelector(".todoBox"),
+    todoList2 = document.querySelector("todolist");
 
 const toDos = []; // todo가 추가될 때마다, 해당 array에 추가되도록 한다.
 
@@ -14,7 +16,7 @@ function init() {
 
 function checkOutParent(e) {
     const removeTodo = e.target.parentElement;
-    todoList.removeChild(removeTodo);
+    todoList2.removeChild(removeTodo);
     removeList(removeTodo.id);
     localStorage.setItem("toDos", JSON.stringify(toDos));
 }
@@ -47,7 +49,7 @@ function makeTodo() {
     checkboxForm.addEventListener("submit", handleToDo);
 }
 
-function handleToDo() {
+function handleToDo(event) {
     event.preventDefault();
     const currentValue = inputToDo.value;
     paintTodo(currentValue);
@@ -68,7 +70,8 @@ function paintTodo(text) {
     li.appendChild(delBtn);
     li.id = newId;
 
-    todoList.appendChild(li);
+    // todoList.appendChild(li);
+    todoList2.appendChild(li);
 
     const toDoObj = {
         text: text,

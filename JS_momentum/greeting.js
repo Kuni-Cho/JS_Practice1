@@ -1,80 +1,23 @@
-const button = document.querySelector(".js-button"),
-    todoList = document.querySelector(".js-toDoList"),
-    checkboxForm = document.querySelector(".js-checkboxForm"),
-    inputToDo = checkboxForm.querySelector("input");
-
-const toDos = []; // todo가 추가될 때마다, 해당 array에 추가되도록 한다.
-
+const greetingForm = document.querySelector(".form"),
+    greetings = document.querySelector(".greeting");
 init();
 
 function init() {
-    loadToDos();
-    makeTodo();
+    checkName();
 }
 
-function checkOutParent(e) {
-    const removeTodo = e.target.parentElement;
-    todoList.removeChild(removeTodo);
-    removeList(removeTodo.id);
-    localStorage.setItem("toDos", JSON.stringify(toDos));
-}
+function checkName() {
 
-function removeList(idx) {
-    toDos.splice(idx - 1, 1);
-}
+    const name = localStorage.getItem("name")
 
-function loadToDos() {
-    const loadToDos = localStorage.getItem("toDos");
+    if (name != null) {
+        const greetingWords = `Hello, ${name} !`;
+        const greetingMsg = document.createElement("h5");
+        greetingMsg.innerHTML = greetingWords;
+        greetings.appendChild(greetingMsg);
+        greetings.classList.add("showing");
 
-    if (loadToDos !== null) {
-        const parsedToDos = JSON.parse(loadToDos);
-
-        // for (let i = 0; i < parsedToDos.length; i++) {
-        //     paintTodo(parsedToDos[i].text);
-        // }
-
-        parsedToDos.forEach(function (toDos) { //array forEach 사용하는 방법
-            paintTodo(toDos.text);
-        });
+    } else {
+        greetingForm.classList.add("showing");
     }
-}
-
-function updateToDos() {
-    localStorage.setItem("toDos", JSON.stringify(toDos));
-}
-
-function makeTodo() {
-    checkboxForm.addEventListener("submit", handleToDo);
-}
-
-function handleToDo() {
-    event.preventDefault();
-    const currentValue = inputToDo.value;
-    paintTodo(currentValue);
-    inputToDo.value = "";
-
-}
-
-function paintTodo(text) {
-    const li = document.createElement("li");
-    const delBtn = document.createElement("button");
-    const span = document.createElement("span");
-    const newId = toDos.length + 1;
-    span.innerText = text;
-    delBtn.innerText = "❌";
-    delBtn.addEventListener("click", checkOutParent);
-
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    li.id = newId;
-
-    todoList.appendChild(li);
-
-    const toDoObj = {
-        text: text,
-        id: newId
-    }
-
-    toDos.push(toDoObj);
-    updateToDos();
 }
