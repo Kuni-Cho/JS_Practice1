@@ -10,6 +10,29 @@
     display: block;
 }
 
+.js-greeting{
+    text-align: center;
+}
+
+.js-form{
+    text-align: center;
+}
+
+.js-form::placeholder{
+    color:white;
+    text-align: center;
+}
+
+.inputName{
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1;
+    background-color: transparent;
+    color : white;
+    border-color: white;
+}
+
 .momentum{
     position:absolute;
   top:50%;

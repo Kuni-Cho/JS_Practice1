@@ -1,4 +1,5 @@
 const greetingForm = document.querySelector(".form"),
+    inputName = document.querySelector(".inputName"),
     greetings = document.querySelector(".greeting");
 init();
 
@@ -18,6 +19,11 @@ function checkName() {
         greetings.classList.add("showing");
 
     } else {
+        greetingForm.addEventListener("submit", saveName)
         greetingForm.classList.add("showing");
     }
+}
+
+function saveName(event) {
+    event.preventDefault();
 }
