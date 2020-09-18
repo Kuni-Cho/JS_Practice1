@@ -1,3 +1,23 @@
+.js-todoListOutLine{
+    background-color: white;
+    width: 30vw;
+    margin: 0;
+}
+
+.js-toDoLists{
+    padding: 0;
+    width: fit-content;
+}
+
+@media(max-width:450px){
+    .js-todoListOutLine{
+        background-color: white;
+        width: 80vw;
+        height: 20vh;
+        margin: 0;
+    }
+}
+
 .greeting{
     display: none;
 }
@@ -68,7 +88,7 @@ input::placeholder{
     text-align: center;
 }
 
-.todo{
+.todoBox{
     position: absolute;
     right : 30px;
     bottom:0px;
@@ -88,7 +108,14 @@ h4{
 
 h5{
     font-size: 1vw;
-    
+    text-align: end;    
+}
+
+li{
+    list-style: none;    
+    /* background-color: white; */
+    color: black;
+    margin-left: 0;
 }
 
 @keyframes fadeIn{

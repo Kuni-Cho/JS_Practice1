@@ -1,9 +1,9 @@
 const button = document.querySelector(".js-button"),
-    // todoList = document.querySelector(".js-toDoList"),
+    todoList = document.querySelector(".js-toDoLists"),
     checkboxForm = document.querySelector(".js-checkboxForm"),
     inputToDo = checkboxForm.querySelector("input"),
-    todoBox = document.querySelector(".todoBox"),
-    todoList2 = document.querySelector("todolist");
+    todoBox = document.querySelector(".todoBox");
+
 
 const toDos = []; // todo가 추가될 때마다, 해당 array에 추가되도록 한다.
 
@@ -16,7 +16,7 @@ function init() {
 
 function checkOutParent(e) {
     const removeTodo = e.target.parentElement;
-    todoList2.removeChild(removeTodo);
+    todoList.removeChild(removeTodo);
     removeList(removeTodo.id);
     localStorage.setItem("toDos", JSON.stringify(toDos));
 }
@@ -59,19 +59,21 @@ function handleToDo(event) {
 
 function paintTodo(text) {
     const li = document.createElement("li");
+    const checkBox = document.createElement("input")
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
+    checkBox.type = "checkbox";
     span.innerText = text;
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", checkOutParent);
 
+    li.appendChild(checkBox);
     li.appendChild(span);
     li.appendChild(delBtn);
     li.id = newId;
 
-    // todoList.appendChild(li);
-    todoList2.appendChild(li);
+    todoList.appendChild(li);
 
     const toDoObj = {
         text: text,
